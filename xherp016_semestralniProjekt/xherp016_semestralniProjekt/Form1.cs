@@ -10,8 +10,25 @@ namespace xherp016_semestralniProjekt
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Person person = new Person(textBox1.Text, textBox2.Text, textBox3.Text);
-            bill.addItemToBill(listBox1, person);
+            double money = 0;
+            try
+            {
+                money = double.Parse(textBox3.Text);
+                string name = textBox1.Text;
+                string description = textBox2.Text;
+                if(name.Length == 0 || description.Length == 0) { 
+                    throw new Exception();
+                }
+                Person person = new Person(name, description, money);
+                bill.addItemToBill(listBox1, person);
+            }
+            catch { MessageBox.Show("Text have to Money have to be number!"); }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //TODO
+            textBox4.Text = bill.getSumOfMoneyFromBill().ToString();
         }
     }
 }

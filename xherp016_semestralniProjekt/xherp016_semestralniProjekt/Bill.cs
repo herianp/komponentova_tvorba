@@ -22,10 +22,15 @@ namespace xherp016_semestralniProjekt
             listBox.Items.Add($"{person.Name}, {person.Description}, {person.SpentMoney}");
         }
 
-        public static double getSumOfMoneyFromBill()
+        public double getSumOfMoneyFromBill()
         {
+            double moneyOutput = 0;
             //todo make logic
-            return 2;
+            foreach(Person person in this.PersonList)
+            {
+                moneyOutput += person.SpentMoney;
+            }
+            return moneyOutput;
         }
 
     }

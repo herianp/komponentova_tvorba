@@ -11,9 +11,9 @@ namespace xherp016_semestralniProjekt
         // Easier way to create setters and getters than do private string _name; and than create methods for geter and setter. 
         public string Name { get; set; }
         public string Description { get; set; }
-        public string SpentMoney { get; set; }
+        public double SpentMoney { get; set; }
 
-        public Person(string name, string description, string spentMoney)
+        public Person(string name, string description, double spentMoney)
         {
             this.Name = name;
             this.Description = description;
