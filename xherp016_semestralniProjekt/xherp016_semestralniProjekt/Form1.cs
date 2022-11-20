@@ -3,10 +3,41 @@ namespace xherp016_semestralniProjekt
     public partial class Form1 : Form
     {
         Bill bill = new Bill();
+        private Button currentButton;
+        
         public Form1()
         {
             InitializeComponent();
         }
+
+        private void ActiveButton(object btnSender)
+        {
+            if(btnSender != null)
+            {
+                if(currentButton != (Button)btnSender)
+                {
+                    DisableButton();
+                    currentButton = (Button)btnSender;
+                    currentButton.ForeColor = Color.Black;
+                    currentButton.BackColor = Color.White;
+                    currentButton.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                }
+            }
+        }
+
+        private void DisableButton()
+        {
+            foreach(Control prevBtn in panelMenu.Controls)
+            {
+                if(prevBtn.GetType() == typeof(Button))
+                {
+                    prevBtn.ForeColor = Color.Black;
+                    prevBtn.BackColor = Color.DarkGray;
+                    prevBtn.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                }
+            }
+        }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -27,8 +58,23 @@ namespace xherp016_semestralniProjekt
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //TODO
+            //TODO logic
             textBox4.Text = bill.getSumOfMoneyFromBill().ToString();
+        }
+
+        private void btnBills_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender);
+        }
+
+        private void btnPeople_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            ActiveButton(sender);
         }
     }
 }
