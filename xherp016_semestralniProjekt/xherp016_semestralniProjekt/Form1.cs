@@ -2,15 +2,15 @@ namespace xherp016_semestralniProjekt
 {
     public partial class Form1 : Form
     {
-        Bill bill = new Bill();
         private Button currentButton;
+        private Form activeForm;
         
         public Form1()
         {
             InitializeComponent();
         }
 
-        private void ActiveButton(object btnSender)
+        private void ActiveButton(object btnSender, Color color)
         {
             if(btnSender != null)
             {
@@ -19,8 +19,10 @@ namespace xherp016_semestralniProjekt
                     DisableButton();
                     currentButton = (Button)btnSender;
                     currentButton.ForeColor = Color.Black;
-                    currentButton.BackColor = Color.White;
+                    currentButton.BackColor = color;
                     currentButton.Font = new System.Drawing.Font("Segoe UI", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+                    panelTitleBar.BackColor= color;
+                    panelLogo.BackColor = ControlPaint.Dark(color);
                 }
             }
         }
@@ -38,43 +40,52 @@ namespace xherp016_semestralniProjekt
             }
         }
 
-
-        private void button2_Click(object sender, EventArgs e)
+        private void openChildForm(Form childForm, object btnSender)
         {
-            double money = 0;
-            try
+            if(activeForm != null)
             {
-                money = double.Parse(textBox3.Text);
-                string name = textBox1.Text;
-                string description = textBox2.Text;
-                if(name.Length == 0 || description.Length == 0) { 
-                    throw new Exception();
-                }
-                Person person = new Person(name, description, money);
-                bill.addItemToBill(listBox1, person);
+                activeForm.Close();
             }
-            catch { MessageBox.Show("Text have to Money have to be number!"); }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //TODO logic
-            textBox4.Text = bill.getSumOfMoneyFromBill().ToString();
+            ActiveButton(btnSender, Color.Aqua);
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.panelBill.Controls.Add(childForm);
+            this.panelBill.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+            labelTitle.Text = childForm.Text;
         }
 
         private void btnBills_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            ActiveButton(sender, Color.DarkGreen);
         }
 
         private void btnPeople_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            ActiveButton(sender, Color.HotPink);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender);
+            ActiveButton(sender,Color.Gold);
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+            //delete this
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+            //DELETE
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //DELETE
         }
     }
 }
