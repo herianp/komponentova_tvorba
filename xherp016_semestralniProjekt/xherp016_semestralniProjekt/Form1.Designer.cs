@@ -30,6 +30,7 @@
         {
             this.homeText = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.buttonFilterBills = new System.Windows.Forms.Button();
             this.btnMoney = new System.Windows.Forms.Button();
             this.btnPeople = new System.Windows.Forms.Button();
             this.btnBills = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.DarkGray;
+            this.panelMenu.Controls.Add(this.buttonFilterBills);
             this.panelMenu.Controls.Add(this.btnMoney);
             this.panelMenu.Controls.Add(this.btnPeople);
             this.panelMenu.Controls.Add(this.btnBills);
@@ -66,6 +68,26 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(200, 461);
             this.panelMenu.TabIndex = 17;
+            // 
+            // buttonFilterBills
+            // 
+            this.buttonFilterBills.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonFilterBills.FlatAppearance.BorderSize = 0;
+            this.buttonFilterBills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFilterBills.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.buttonFilterBills.ForeColor = System.Drawing.Color.Black;
+            this.buttonFilterBills.Image = global::xherp016_semestralniProjekt.Properties.Resources.people__1_;
+            this.buttonFilterBills.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFilterBills.Location = new System.Drawing.Point(0, 260);
+            this.buttonFilterBills.Name = "buttonFilterBills";
+            this.buttonFilterBills.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.buttonFilterBills.Size = new System.Drawing.Size(200, 60);
+            this.buttonFilterBills.TabIndex = 3;
+            this.buttonFilterBills.Text = "Filter Bills";
+            this.buttonFilterBills.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonFilterBills.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.buttonFilterBills.UseVisualStyleBackColor = true;
+            this.buttonFilterBills.Click += new System.EventHandler(this.buttonFilterBills_Click);
             // 
             // btnMoney
             // 
@@ -199,5 +221,7 @@
         private Panel panelTitleBar;
         private Label labelTitle;
         private Panel panelDesktop;
+        private Button button1;
+        private Button buttonFilterBills;
     }
 }

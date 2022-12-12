@@ -7,20 +7,21 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Serialization;
 
 namespace xherp016_semestralniProjekt
 {
     [Serializable()]
     public class Bill : INotifyPropertyChanged
     {
-        public Person? Person { get; set; }
+        public string PersonName { get; set; }
 
         public string? Description { get; set; }
         public float? Amount { get; set; }
 
-        public Bill(Person? person, string? description, float? amount)
+        public Bill(string personName, string? description, float? amount)
         {
-            this.Person = person;
+            this.PersonName = personName;
             Description = description;
             Amount = amount;
         }

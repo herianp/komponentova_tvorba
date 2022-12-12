@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -16,12 +17,12 @@ namespace xherp016_semestralniProjekt.Forms
         {
             InitializeComponent();
             dataGridViewBill.DataSource = Database.Bills;
-            fillComboBox(Database.Persons);
+            fillComboBox();
         }
 
-        private void fillComboBox(BindingList<Person> personList)
+        private void fillComboBox()
         {
-            foreach(Person person in personList)
+            foreach (Person person in Database.Persons)
             {
                 string fullName = person.Name + " " + person.SureName;
                 comboBoxChoosePerson.Items.Add(fullName);
@@ -39,11 +40,12 @@ namespace xherp016_semestralniProjekt.Forms
 
         private void buttonDeleteFromBill_Click(object sender, EventArgs e)
         {
-            Bill bill = (Bill)dataGridViewBill.CurrentRow.DataBoundItem;
-            if (!Database.DeleteBill(bill))
+            if (dataGridViewBill.Rows.Count != 1)
             {
-                MessageBox.Show("No more bills in List");
-            }
+                Bill bill = (Bill)dataGridViewBill.CurrentRow.DataBoundItem;
+                Database.DeleteBill(bill);
+                return;
+            } else MessageBox.Show("No more bills in List");
         }
     }
 }

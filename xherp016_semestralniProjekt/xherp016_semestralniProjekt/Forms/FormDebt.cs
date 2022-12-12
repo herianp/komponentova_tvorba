@@ -10,16 +10,21 @@ using System.Windows.Forms;
 
 namespace xherp016_semestralniProjekt.Forms
 {
-    public partial class FormMoney : Form
+    public partial class FormDebt : Form
     {
-        public FormMoney()
+        public FormDebt()
         {
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void labelMoney_Click(object sender, EventArgs e)
         {
-            //delete
+            //DELETE
         }
+
+        /*public static List<Debt> countDebtsForEveryPerson()
+        {
+            
+        }*/
     }
 }

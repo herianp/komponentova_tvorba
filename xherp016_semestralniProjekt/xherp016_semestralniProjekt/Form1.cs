@@ -74,12 +74,17 @@ namespace xherp016_semestralniProjekt
 
         private void button4_Click(object sender, EventArgs e)
         {
-            openChildForm(new Forms.FormMoney(), sender, Color.Gold);
+            openChildForm(new Forms.FormDebt(), sender, Color.Gold);
         }
 
         private void form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Database.Serialisation();
+        }
+
+        private void buttonFilterBills_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Forms.FilterBills(), sender, Color.DarkKhaki);
         }
     }
 }

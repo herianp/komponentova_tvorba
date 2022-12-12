@@ -12,6 +12,7 @@ namespace xherp016_semestralniProjekt
     {
         public string Name { get; set; }
         public string SureName { get; set; }
+        public List<Bill> PersonBills { get; set; } = new List<Bill>();
 
         public Person() { }
 
