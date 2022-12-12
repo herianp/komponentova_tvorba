@@ -36,7 +36,7 @@
             this.panelLogo = new System.Windows.Forms.Panel();
             this.panelTitleBar = new System.Windows.Forms.Panel();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.panelBill = new System.Windows.Forms.Panel();
+            this.panelDesktop = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
@@ -64,7 +64,7 @@
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(200, 450);
+            this.panelMenu.Size = new System.Drawing.Size(200, 461);
             this.panelMenu.TabIndex = 17;
             // 
             // btnMoney
@@ -145,7 +145,7 @@
             this.panelTitleBar.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.panelTitleBar.Location = new System.Drawing.Point(200, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(600, 80);
+            this.panelTitleBar.Size = new System.Drawing.Size(784, 80);
             this.panelTitleBar.TabIndex = 18;
             // 
             // labelTitle
@@ -154,31 +154,31 @@
             this.labelTitle.AutoSize = true;
             this.labelTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelTitle.ForeColor = System.Drawing.Color.White;
-            this.labelTitle.Location = new System.Drawing.Point(253, 24);
+            this.labelTitle.Location = new System.Drawing.Point(345, 24);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(80, 30);
             this.labelTitle.TabIndex = 0;
             this.labelTitle.Text = "HOME";
-            this.labelTitle.Click += new System.EventHandler(this.label1_Click);
             // 
-            // panelBill
+            // panelDesktop
             // 
-            this.panelBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelBill.Location = new System.Drawing.Point(200, 80);
-            this.panelBill.Name = "panelBill";
-            this.panelBill.Size = new System.Drawing.Size(600, 370);
-            this.panelBill.TabIndex = 19;
+            this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktop.Location = new System.Drawing.Point(200, 80);
+            this.panelDesktop.Name = "panelDesktop";
+            this.panelDesktop.Size = new System.Drawing.Size(784, 381);
+            this.panelDesktop.TabIndex = 19;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.panelBill);
+            this.ClientSize = new System.Drawing.Size(984, 461);
+            this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.form1_FormClosed);
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
@@ -198,6 +198,6 @@
         private Button btnPeople;
         private Panel panelTitleBar;
         private Label labelTitle;
-        private Panel panelBill;
+        private Panel panelDesktop;
     }
 }

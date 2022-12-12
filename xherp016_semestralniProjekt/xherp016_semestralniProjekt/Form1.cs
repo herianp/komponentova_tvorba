@@ -1,13 +1,17 @@
+using System.Windows.Forms;
+using xherp016_semestralniProjekt.Forms;
+
 namespace xherp016_semestralniProjekt
 {
     public partial class Form1 : Form
     {
         private Button currentButton;
         private Form activeForm;
-        
+
         public Form1()
         {
             InitializeComponent();
+            Database.Init();
         }
 
         private void ActiveButton(object btnSender, Color color)
@@ -40,19 +44,19 @@ namespace xherp016_semestralniProjekt
             }
         }
 
-        private void openChildForm(Form childForm, object btnSender)
+        private void openChildForm(Form childForm, object btnSender, Color color)
         {
             if(activeForm != null)
             {
                 activeForm.Close();
             }
-            ActiveButton(btnSender, Color.Aqua);
+            ActiveButton(btnSender, color);
             activeForm = childForm;
             childForm.TopLevel = false;
             childForm.FormBorderStyle = FormBorderStyle.None;
             childForm.Dock = DockStyle.Fill;
-            this.panelBill.Controls.Add(childForm);
-            this.panelBill.Tag = childForm;
+            this.panelDesktop.Controls.Add(childForm);
+            this.panelDesktop.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
             labelTitle.Text = childForm.Text;
@@ -60,32 +64,22 @@ namespace xherp016_semestralniProjekt
 
         private void btnBills_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, Color.DarkGreen);
+            openChildForm(new Forms.FormBill(), sender, Color.DarkGreen);
         }
 
         private void btnPeople_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender, Color.HotPink);
+            openChildForm(new Forms.FormPeople(), sender, Color.HotPink);
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ActiveButton(sender,Color.Gold);
+            openChildForm(new Forms.FormMoney(), sender, Color.Gold);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            //delete this
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-            //DELETE
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            //DELETE
+            Database.Serialisation();
         }
     }
 }

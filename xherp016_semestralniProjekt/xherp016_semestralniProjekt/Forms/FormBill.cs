@@ -15,21 +15,35 @@ namespace xherp016_semestralniProjekt.Forms
         public FormBill()
         {
             InitializeComponent();
+            dataGridViewBill.DataSource = Database.Bills;
+            fillComboBox(Database.Persons);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void fillComboBox(BindingList<Person> personList)
         {
-            //delete
+            foreach(Person person in personList)
+            {
+                string fullName = person.Name + " " + person.SureName;
+                comboBoxChoosePerson.Items.Add(fullName);
+            }
+
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void buttonAddToBill_Click(object sender, EventArgs e)
         {
-            //delete
+            string personName = comboBoxChoosePerson.GetItemText(comboBoxChoosePerson.SelectedItem);
+            string description = textBoxDescription.Text;
+            string amount = textBoxMoney.Text;
+            Database.createNewBill(personName, description, amount);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonDeleteFromBill_Click(object sender, EventArgs e)
         {
-            //todo
+            Bill bill = (Bill)dataGridViewBill.CurrentRow.DataBoundItem;
+            if (!Database.DeleteBill(bill))
+            {
+                MessageBox.Show("No more bills in List");
+            }
         }
     }
 }

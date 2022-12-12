@@ -1,37 +1,37 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace xherp016_semestralniProjekt
 {
-    internal class Bill
+    [Serializable()]
+    public class Bill : INotifyPropertyChanged
     {
-        public ArrayList PersonList { get; set; }
+        public Person? Person { get; set; }
 
-        public Bill()
-        {
-            this.PersonList = new ArrayList();
-        }
-        public void addItemToBill(ListBox listBox, Person person)
-        {
-            this.PersonList.Add(person);
-            listBox.Items.Add($"{person.Name}, {person.Description}, {person.SpentMoney}");
-        }
+        public string? Description { get; set; }
+        public float? Amount { get; set; }
 
-        public double getSumOfMoneyFromBill()
+        public Bill(Person? person, string? description, float? amount)
         {
-            double moneyOutput = 0;
-            //todo make logic
-            foreach(Person person in this.PersonList)
-            {
-                moneyOutput += person.SpentMoney;
-            }
-            return moneyOutput;
+            this.Person = person;
+            Description = description;
+            Amount = amount;
         }
 
+        public Bill() { }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }
