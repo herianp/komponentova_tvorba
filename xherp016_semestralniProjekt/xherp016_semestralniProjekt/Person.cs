@@ -12,7 +12,7 @@ namespace xherp016_semestralniProjekt
     {
         public string Name { get; set; }
         public string SureName { get; set; }
-        public List<Bill> PersonBills { get; set; } = new List<Bill>();
+        public BindingList<Bill> PersonBills { get; set; } = new BindingList<Bill>();
 
         public Person() { }
 
@@ -25,6 +25,12 @@ namespace xherp016_semestralniProjekt
         public override string ToString()
         {
             return Name.ToString() + " " + SureName.ToString();
+        }
+
+        public string getFullName()
+        {
+            string fullName = Name.ToString() + " " + SureName.ToString();
+            return fullName;
         }
     }
 }

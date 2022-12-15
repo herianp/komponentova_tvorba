@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,20 +21,39 @@ namespace xherp016_semestralniProjekt.Forms
 
         private void buttonFilterDebts_Click(object sender, EventArgs e)
         {
+            Debug.WriteLine("START");
+            Person? person = null;
             string fullName = comboBoxFilterByUser.GetItemText(comboBoxFilterByUser.SelectedItem);
-            foreach (Person per in Database.Persons)
+            string description = textBoxByDescription.Text;
+            if (comboBoxFilterByUser.SelectedIndex != -1 || !string.IsNullOrEmpty(description))
             {
-                string personFullName = per.Name + " " + per.SureName;
-                if (personFullName == fullName)
+                Debug.WriteLine("herer");
+                if (comboBoxFilterByUser.SelectedIndex != -1 && !string.IsNullOrEmpty(textBoxByDescription.Text))
                 {
-                    dataGridViewFiltredDebts.DataSource = per.PersonBills;
+                    Debug.WriteLine("1");
+                    person = Database.FindPersonByFullName(fullName);
+                    dataGridViewFiltredDebts.DataSource = Database.FindBillsByPersonAndDescription(person, description);
+                    return;
+                } else if(comboBoxFilterByUser.SelectedIndex != -1)
+                {
+                    Debug.WriteLine("2");
+                    person = Database.FindPersonByFullName(fullName);
+                    dataGridViewFiltredDebts.DataSource = person?.PersonBills;
+                    return;
+                } else if (!string.IsNullOrEmpty(textBoxByDescription.Text))
+                {
+                    Debug.WriteLine("3");
+                    dataGridViewFiltredDebts.DataSource = Database.FindBillsByDescription(description);
+                    return;
                 }
-            }
+            } else MessageBox.Show("You have to input at least one filter");
+            Debug.WriteLine("END");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             comboBoxFilterByUser.SelectedIndex = -1;
+            textBoxByDescription.Clear();
         }
 
         private void fillComboBoxes()

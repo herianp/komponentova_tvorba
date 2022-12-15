@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.homeText = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.buttonFilterBills = new System.Windows.Forms.Button();
@@ -76,7 +77,7 @@
             this.buttonFilterBills.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonFilterBills.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.buttonFilterBills.ForeColor = System.Drawing.Color.Black;
-            this.buttonFilterBills.Image = global::xherp016_semestralniProjekt.Properties.Resources.people__1_;
+            this.buttonFilterBills.Image = ((System.Drawing.Image)(resources.GetObject("buttonFilterBills.Image")));
             this.buttonFilterBills.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonFilterBills.Location = new System.Drawing.Point(0, 260);
             this.buttonFilterBills.Name = "buttonFilterBills";

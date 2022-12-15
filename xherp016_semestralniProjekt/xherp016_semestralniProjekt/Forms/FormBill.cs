@@ -32,10 +32,13 @@ namespace xherp016_semestralniProjekt.Forms
 
         private void buttonAddToBill_Click(object sender, EventArgs e)
         {
-            string personName = comboBoxChoosePerson.GetItemText(comboBoxChoosePerson.SelectedItem);
             string description = textBoxDescription.Text;
             string amount = textBoxMoney.Text;
-            Database.createNewBill(personName, description, amount);
+            if (comboBoxChoosePerson.SelectedIndex != -1 && !string.IsNullOrEmpty(description) && !string.IsNullOrEmpty(amount))
+            {
+                string personName = comboBoxChoosePerson.GetItemText(comboBoxChoosePerson.SelectedItem);
+                Database.createNewBill(personName, description, amount);
+            } else MessageBox.Show("You have to select and input all values!");
         }
 
         private void buttonDeleteFromBill_Click(object sender, EventArgs e)

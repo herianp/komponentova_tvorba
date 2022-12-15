@@ -44,7 +44,6 @@
             this.labelMoney.TabIndex = 0;
             this.labelMoney.Text = "Debts";
             this.labelMoney.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            this.labelMoney.Click += new System.EventHandler(this.labelMoney_Click);
             // 
             // dataGridViewMoney
             // 

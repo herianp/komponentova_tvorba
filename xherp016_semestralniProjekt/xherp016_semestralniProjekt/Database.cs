@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace xherp016_semestralniProjekt
 {
@@ -33,14 +36,14 @@ namespace xherp016_semestralniProjekt
         //      using Person.PersonBills.Remove(bill);
         public static void CreateBondsBetweenPersonsAndBills()
         {
-            foreach(Bill bill in Database.Bills)
+            foreach (Person person in Database.Persons)
             {
-                foreach(Person person in Database.Persons)
+                person.PersonBills.Clear();
+                foreach (Bill bill in Database.Bills)
                 {
                     string person_fullName = person.Name + " " + person.SureName;
                     if (bill.PersonName == person_fullName)
                     {
-                        person.PersonBills.Remove(bill);
                         person.PersonBills.Add(bill);
                     }
                 }
@@ -91,7 +94,9 @@ namespace xherp016_semestralniProjekt
                         Bill bill = new Bill(fullName, description, amountValue);
                         Database.Bills.Add(bill);
                         per.PersonBills.Add(bill);
+                        return;
                     }
+                    else MessageBox.Show("Input money, have to be number!");
                 }
             }
 
@@ -121,6 +126,83 @@ namespace xherp016_semestralniProjekt
                 }
                 Database.Persons.Remove(person);
             }
+        }
+
+        public static string DeleteExcessSpacesFromString(string text)
+        {
+            text = Regex.Replace(text, @" +", " ");
+            if (text[text.Length - 1].Equals(' '))
+            {
+                text = text.Remove(text.Length - 1);
+                Debug.WriteLine("AFTER_IF: " + text);
+            }
+            return Regex.Replace(text, @" +", " ");
+        }
+
+
+
+        public static Person? FindPersonByFullName(string username)
+        {
+            foreach (Person per in Database.Persons)
+            {
+                string personFullName = per.Name + " " + per.SureName;
+                if (personFullName == username)
+                {
+                    return per;
+                }
+            }
+            return null;
+        }
+
+        public static BindingList<Bill>? FindBillsByPersonAndDescription(Person? person, string description)
+        {
+            BindingList<Bill> bills = new BindingList<Bill>();
+
+            foreach (Bill bill in person.PersonBills)
+            {
+                if (bill.Description == description)
+                {
+                    bills.Add(bill);
+                }
+            }
+            return bills;
+        }
+
+        public static BindingList<Bill>? FindBillsByDescription(string description)
+        {
+            BindingList<Bill> bills = new BindingList<Bill>();
+
+            foreach (Bill bill in Database.Bills)
+            {
+                if (bill.Description == description)
+                {
+                    bills.Add(bill);
+                }
+            }
+            return bills;
+        }
+
+        public static Dictionary<string, float>? CountDebtsForEveryPerson()
+        {
+            float sumOfDebtsAmount = 0;
+            Dictionary<string, float> debtsOutput = new Dictionary<string, float>();
+            foreach (Person person in Database.Persons)
+            {
+                float debtAmount = 0;
+                foreach (Bill bill in person.PersonBills)
+                {
+                    debtAmount += bill.Amount;
+                    sumOfDebtsAmount += bill.Amount;
+                }
+                debtsOutput.Add(person.getFullName(), debtAmount);
+            }
+
+            foreach (string key in debtsOutput.Keys)
+            {
+                debtsOutput[key] -= (sumOfDebtsAmount / Database.Persons.Count);
+            }
+            Debug.WriteLine(Database.Persons.Count);
+            return debtsOutput;
         }
     }
 }

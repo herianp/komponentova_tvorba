@@ -46,9 +46,9 @@
             this.labelPeople.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.labelPeople.Location = new System.Drawing.Point(347, 21);
             this.labelPeople.Name = "labelPeople";
-            this.labelPeople.Size = new System.Drawing.Size(91, 32);
+            this.labelPeople.Size = new System.Drawing.Size(92, 32);
             this.labelPeople.TabIndex = 0;
-            this.labelPeople.Text = "People";
+            this.labelPeople.Text = "Person";
             // 
             // dataGridViewPeople
             // 
@@ -82,9 +82,9 @@
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(10, 67);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 25);
+            this.label1.Size = new System.Drawing.Size(181, 25);
             this.label1.TabIndex = 20;
-            this.label1.Text = "ADD NEW BILL";
+            this.label1.Text = "ADD NEW PERSON";
             // 
             // labelDescription
             // 

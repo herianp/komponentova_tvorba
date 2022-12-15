@@ -36,7 +36,7 @@
             this.labelByDescription = new System.Windows.Forms.Label();
             this.buttonFilterDebts = new System.Windows.Forms.Button();
             this.buttonRefreshComboBox = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxByDescription = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFiltredDebts)).BeginInit();
             this.SuspendLayout();
             // 
@@ -128,19 +128,19 @@
             this.buttonRefreshComboBox.UseVisualStyleBackColor = false;
             this.buttonRefreshComboBox.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBoxByDescription
             // 
-            this.textBox1.Location = new System.Drawing.Point(175, 126);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(200, 23);
-            this.textBox1.TabIndex = 17;
+            this.textBoxByDescription.Location = new System.Drawing.Point(175, 126);
+            this.textBoxByDescription.Name = "textBoxByDescription";
+            this.textBoxByDescription.Size = new System.Drawing.Size(200, 23);
+            this.textBoxByDescription.TabIndex = 17;
             // 
             // FilterBills
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxByDescription);
             this.Controls.Add(this.buttonRefreshComboBox);
             this.Controls.Add(this.buttonFilterDebts);
             this.Controls.Add(this.labelByDescription);
@@ -167,6 +167,6 @@
         private Label labelByDescription;
         private Button buttonFilterDebts;
         private Button buttonRefreshComboBox;
-        private TextBox textBox1;
+        private TextBox textBoxByDescription;
     }
 }

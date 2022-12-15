@@ -34,10 +34,13 @@ namespace xherp016_semestralniProjekt.Forms
         {
             if (textBoxName.Text != "" && textBoxSureName.Text != "")
             {
+                // handle if name or surname starts with space
                 if(!textBoxName.Text.StartsWith(" ") && !textBoxSureName.Text.StartsWith(" ")){
                     //TODO HANDLE SPACES AFTER INPUT
                     string name = textBoxName.Text;
                     string sureName = textBoxSureName.Text;
+                    name = Database.DeleteExcessSpacesFromString(name);
+                    sureName = Database.DeleteExcessSpacesFromString(sureName);
                     Database.createNewPerson(name, sureName);
                 } 
                 else MessageBox.Show("You have to input letter first");

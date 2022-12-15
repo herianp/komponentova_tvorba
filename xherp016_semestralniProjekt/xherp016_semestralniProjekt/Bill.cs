@@ -16,10 +16,10 @@ namespace xherp016_semestralniProjekt
     {
         public string PersonName { get; set; }
 
-        public string? Description { get; set; }
-        public float? Amount { get; set; }
+        public string Description { get; set; }
+        public float Amount { get; set; }
 
-        public Bill(string personName, string? description, float? amount)
+        public Bill(string personName, string description, float amount)
         {
             this.PersonName = personName;
             Description = description;
@@ -34,5 +34,7 @@ namespace xherp016_semestralniProjekt
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
     }
 }
