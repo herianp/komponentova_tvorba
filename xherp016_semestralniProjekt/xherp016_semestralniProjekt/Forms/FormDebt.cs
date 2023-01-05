@@ -15,7 +15,7 @@ namespace xherp016_semestralniProjekt.Forms
         public FormDebt()
         {
             InitializeComponent();
-            dataGridViewMoney.DataSource = Database.CountDebtsForEveryPerson()?.ToArray();
+            dataGridViewMoney.DataSource = Database.CountDebtsForEveryPerson(labelTotalAmount)?.ToArray();
         }
     }
 }

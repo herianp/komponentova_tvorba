@@ -99,7 +99,7 @@ namespace xherp016_semestralniProjekt
         {
             if (Database.Bills.Count > 0)
             {
-                foreach(Person p in Persons)
+                foreach (Person p in Persons)
                 {
                     if (bill.PersonName.Equals(p.ToString()))
                     {
@@ -190,7 +190,7 @@ namespace xherp016_semestralniProjekt
 
 
         // final counter of debts for each person
-        public static Dictionary<string, float>? CountDebtsForEveryPerson()
+        public static Dictionary<string, float>? CountDebtsForEveryPerson(Label label)
         {
             float sumOfDebtsAmount = 0;
             Dictionary<string, float> debtsOutput = new Dictionary<string, float>();
@@ -208,6 +208,8 @@ namespace xherp016_semestralniProjekt
             {
                 debtsOutput[key] -= (sumOfDebtsAmount / Database.Persons.Count);
             }
+            // set total amount label
+            label.Text = sumOfDebtsAmount.ToString();
             return debtsOutput;
         }
     }

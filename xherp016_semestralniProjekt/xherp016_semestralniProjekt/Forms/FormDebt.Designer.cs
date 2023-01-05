@@ -31,6 +31,8 @@
             this.labelMoney = new System.Windows.Forms.Label();
             this.dataGridViewMoney = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.labelTotalAmount = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoney)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,11 +71,35 @@
             this.label1.Text = "There are information, how much every body have to pay or how much they have to g" +
     "et.";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(12, 181);
+            this.label2.MaximumSize = new System.Drawing.Size(300, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(116, 21);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Total amount:";
+            // 
+            // labelTotalAmount
+            // 
+            this.labelTotalAmount.AutoSize = true;
+            this.labelTotalAmount.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelTotalAmount.Location = new System.Drawing.Point(134, 181);
+            this.labelTotalAmount.MaximumSize = new System.Drawing.Size(300, 0);
+            this.labelTotalAmount.Name = "labelTotalAmount";
+            this.labelTotalAmount.Size = new System.Drawing.Size(19, 21);
+            this.labelTotalAmount.TabIndex = 4;
+            this.labelTotalAmount.Text = "0";
+            // 
             // FormDebt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.labelTotalAmount);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewMoney);
             this.Controls.Add(this.labelMoney);
@@ -91,5 +117,7 @@
         private DataGridView dataGridView1;
         private DataGridView dataGridViewMoney;
         private Label label1;
+        private Label label2;
+        private Label labelTotalAmount;
     }
 }

@@ -37,7 +37,8 @@ namespace xherp016_semestralniProjekt.Forms
             if (textBoxName.Text != "" && textBoxSureName.Text != "")
             {
                 // handle if name or surname starts with space
-                if(!textBoxName.Text.StartsWith(" ") && !textBoxSureName.Text.StartsWith(" ")){
+                if (!textBoxName.Text.StartsWith(" ") && !textBoxSureName.Text.StartsWith(" "))
+                {
                     string name = textBoxName.Text;
                     string sureName = textBoxSureName.Text;
 
@@ -45,8 +46,23 @@ namespace xherp016_semestralniProjekt.Forms
                     name = Database.DeleteExcessSpacesFromString(name);
                     sureName = Database.DeleteExcessSpacesFromString(sureName);
 
-                    Database.CreateNewPerson(name, sureName);
-                } 
+                    // check for unique name
+                    string fullNameInput = name + " " + sureName;
+                    bool flagUnique = true;
+                    foreach (Person p in Database.Persons)
+                    {
+                        if (p.ToString() == fullNameInput)
+                        {
+                            flagUnique = false;
+                            break;
+                        }
+                    }
+                    if (flagUnique)
+                    {
+                        Database.CreateNewPerson(name, sureName);
+                    }
+                    else MessageBox.Show("You have to put unique name and surename");
+                }
                 else MessageBox.Show("You have to input letter first");
             }
             else MessageBox.Show("You have to input Name and Surename!");
