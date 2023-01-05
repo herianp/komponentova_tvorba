@@ -19,7 +19,8 @@ namespace xherp016_semestralniProjekt.Forms
             dataGridViewPeople.DataSource = Database.Persons;
         }
 
-        private void buttonDeletePerson_Click(object sender, EventArgs e)
+        // Delete person from database
+        private void ButtonDeletePerson_Click(object sender, EventArgs e)
         {
             if (dataGridViewPeople.Rows.Count != 1)
             {
@@ -30,18 +31,21 @@ namespace xherp016_semestralniProjekt.Forms
             else MessageBox.Show("No more persons in List");
         }
 
-        private void buttonAddPerson_Click(object sender, EventArgs e)
+        // Add person to database
+        private void ButtonAddPerson_Click(object sender, EventArgs e)
         {
             if (textBoxName.Text != "" && textBoxSureName.Text != "")
             {
                 // handle if name or surname starts with space
                 if(!textBoxName.Text.StartsWith(" ") && !textBoxSureName.Text.StartsWith(" ")){
-                    //TODO HANDLE SPACES AFTER INPUT
                     string name = textBoxName.Text;
                     string sureName = textBoxSureName.Text;
+
+                    // HANDLE SPACES AFTER INPUT
                     name = Database.DeleteExcessSpacesFromString(name);
                     sureName = Database.DeleteExcessSpacesFromString(sureName);
-                    Database.createNewPerson(name, sureName);
+
+                    Database.CreateNewPerson(name, sureName);
                 } 
                 else MessageBox.Show("You have to input letter first");
             }

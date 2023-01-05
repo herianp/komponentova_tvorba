@@ -113,7 +113,7 @@
             this.buttonFilterDebts.TabIndex = 15;
             this.buttonFilterDebts.Text = "FILTER";
             this.buttonFilterDebts.UseVisualStyleBackColor = false;
-            this.buttonFilterDebts.Click += new System.EventHandler(this.buttonFilterDebts_Click);
+            this.buttonFilterDebts.Click += new System.EventHandler(this.ButtonFilterDebts_Click);
             // 
             // buttonRefreshComboBox
             // 
@@ -126,7 +126,7 @@
             this.buttonRefreshComboBox.TabIndex = 16;
             this.buttonRefreshComboBox.Text = "REFRESH FILTERS";
             this.buttonRefreshComboBox.UseVisualStyleBackColor = false;
-            this.buttonRefreshComboBox.Click += new System.EventHandler(this.button1_Click);
+            this.buttonRefreshComboBox.Click += new System.EventHandler(this.RefreshFilters_Click);
             // 
             // textBoxByDescription
             // 

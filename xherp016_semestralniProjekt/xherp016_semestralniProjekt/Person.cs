@@ -26,11 +26,5 @@ namespace xherp016_semestralniProjekt
         {
             return Name.ToString() + " " + SureName.ToString();
         }
-
-        public string getFullName()
-        {
-            string fullName = Name.ToString() + " " + SureName.ToString();
-            return fullName;
-        }
     }
 }

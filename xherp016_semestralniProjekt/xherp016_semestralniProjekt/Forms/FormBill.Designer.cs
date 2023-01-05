@@ -63,7 +63,7 @@
             this.buttonAddToBill.TabIndex = 3;
             this.buttonAddToBill.Text = "ADD";
             this.buttonAddToBill.UseVisualStyleBackColor = false;
-            this.buttonAddToBill.Click += new System.EventHandler(this.buttonAddToBill_Click);
+            this.buttonAddToBill.Click += new System.EventHandler(this.ButtonAddToBill_Click);
             // 
             // comboBoxChoosePerson
             // 
@@ -152,7 +152,7 @@
             this.buttonDeleteFromBill.TabIndex = 12;
             this.buttonDeleteFromBill.Text = "DELETE";
             this.buttonDeleteFromBill.UseVisualStyleBackColor = false;
-            this.buttonDeleteFromBill.Click += new System.EventHandler(this.buttonDeleteFromBill_Click);
+            this.buttonDeleteFromBill.Click += new System.EventHandler(this.ButtonDeleteFromBill_Click);
             // 
             // FormBill
             // 

@@ -17,10 +17,12 @@ namespace xherp016_semestralniProjekt.Forms
         {
             InitializeComponent();
             dataGridViewBill.DataSource = Database.Bills;
-            fillComboBox();
+            FillComboBox();
         }
 
-        private void fillComboBox()
+
+        // fill combobo with persons names
+        private void FillComboBox()
         {
             foreach (Person person in Database.Persons)
             {
@@ -30,25 +32,48 @@ namespace xherp016_semestralniProjekt.Forms
 
         }
 
-        private void buttonAddToBill_Click(object sender, EventArgs e)
+        // add bill to the database 
+        private void ButtonAddToBill_Click(object sender, EventArgs e)
         {
             string description = textBoxDescription.Text;
             string amount = textBoxMoney.Text;
             if (comboBoxChoosePerson.SelectedIndex != -1 && !string.IsNullOrEmpty(description) && !string.IsNullOrEmpty(amount))
             {
-                string personName = comboBoxChoosePerson.GetItemText(comboBoxChoosePerson.SelectedItem);
-                Database.createNewBill(personName, description, amount);
-            } else MessageBox.Show("You have to select and input all values!");
+
+                // handle if description or surname starts with space
+                if (!description.StartsWith(" "))
+                {
+                    // HANDLE SPACES AFTER INPUT
+                    description = Database.DeleteExcessSpacesFromString(description);
+                }
+                else
+                {
+                    MessageBox.Show("You have to input letter first");
+                    return;
+                }
+
+                // amount cant be less than 0
+                if (Int32.Parse(amount) > 0)
+                {
+                    string personName = comboBoxChoosePerson.GetItemText(comboBoxChoosePerson.SelectedItem);
+                    Database.CreateNewBill(personName, description, amount);
+                }
+                else MessageBox.Show("Money have to be positive number!");
+            }
+            else MessageBox.Show("You have to select and input all values!");
         }
 
-        private void buttonDeleteFromBill_Click(object sender, EventArgs e)
+
+        // delete bill from the database
+        private void ButtonDeleteFromBill_Click(object sender, EventArgs e)
         {
             if (dataGridViewBill.Rows.Count != 1)
             {
                 Bill bill = (Bill)dataGridViewBill.CurrentRow.DataBoundItem;
                 Database.DeleteBill(bill);
                 return;
-            } else MessageBox.Show("No more bills in List");
+            }
+            else MessageBox.Show("No more bills in List");
         }
     }
 }

@@ -73,7 +73,7 @@
             this.buttonDeletePerson.TabIndex = 21;
             this.buttonDeletePerson.Text = "DELETE";
             this.buttonDeletePerson.UseVisualStyleBackColor = false;
-            this.buttonDeletePerson.Click += new System.EventHandler(this.buttonDeletePerson_Click);
+            this.buttonDeletePerson.Click += new System.EventHandler(this.ButtonDeletePerson_Click);
             // 
             // label1
             // 
@@ -114,7 +114,7 @@
             this.buttonAddPerson.TabIndex = 14;
             this.buttonAddPerson.Text = "ADD";
             this.buttonAddPerson.UseVisualStyleBackColor = false;
-            this.buttonAddPerson.Click += new System.EventHandler(this.buttonAddPerson_Click);
+            this.buttonAddPerson.Click += new System.EventHandler(this.ButtonAddPerson_Click);
             // 
             // labelChoosePerson
             // 

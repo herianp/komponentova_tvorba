@@ -20,14 +20,6 @@ namespace xherp016_semestralniProjekt
 
         public static void Init()
         {
-            /*Person person_petr = new Person("Petr", "Herian");
-            Persons.Add(person_petr);
-
-            string fullName = person_petr.Name + " " + person_petr.SureName;
-            Bill bill = new Bill(fullName, "Nakup v Lidlu", 500);
-            Bills.Add(bill);
-            person_petr.PersonBills.Add(bill);*/
-
             Database.Deserialisation();
             CreateBondsBetweenPersonsAndBills();
         }
@@ -81,8 +73,8 @@ namespace xherp016_semestralniProjekt
             Database.Persons = Database.Deserialisation<Person>("persons.bin");
         }
 
-        // creating new Bill for Person
-        public static void createNewBill(string fullName, string description, string amount)
+        // create new Bill for Person
+        public static void CreateNewBill(string fullName, string description, string amount)
         {
             foreach (Person per in Database.Persons)
             {
@@ -102,20 +94,31 @@ namespace xherp016_semestralniProjekt
 
         }
 
+        // delete Bill
         public static void DeleteBill(Bill bill)
         {
             if (Database.Bills.Count > 0)
             {
+                foreach(Person p in Persons)
+                {
+                    if (bill.PersonName.Equals(p.ToString()))
+                    {
+                        p.PersonBills.Remove(bill);
+                        break;
+                    }
+                }
                 Database.Bills.Remove(bill);
             }
         }
 
-        public static void createNewPerson(string name, string sureName)
+        // create new Person
+        public static void CreateNewPerson(string name, string sureName)
         {
             Person person = new Person(name, sureName);
             Database.Persons.Add(person);
         }
 
+        // delete Person
         public static void DeletePerson(Person person)
         {
             if (Database.Persons.Count > 0)
@@ -128,6 +131,7 @@ namespace xherp016_semestralniProjekt
             }
         }
 
+        // modify name to better format
         public static string DeleteExcessSpacesFromString(string text)
         {
             text = Regex.Replace(text, @" +", " ");
@@ -140,7 +144,7 @@ namespace xherp016_semestralniProjekt
         }
 
 
-
+        // find person in Database by fullname
         public static Person? FindPersonByFullName(string username)
         {
             foreach (Person per in Database.Persons)
@@ -154,6 +158,7 @@ namespace xherp016_semestralniProjekt
             return null;
         }
 
+        // find bills by person and description
         public static BindingList<Bill>? FindBillsByPersonAndDescription(Person? person, string description)
         {
             BindingList<Bill> bills = new BindingList<Bill>();
@@ -168,6 +173,7 @@ namespace xherp016_semestralniProjekt
             return bills;
         }
 
+        // find bills by description
         public static BindingList<Bill>? FindBillsByDescription(string description)
         {
             BindingList<Bill> bills = new BindingList<Bill>();
@@ -182,6 +188,8 @@ namespace xherp016_semestralniProjekt
             return bills;
         }
 
+
+        // final counter of debts for each person
         public static Dictionary<string, float>? CountDebtsForEveryPerson()
         {
             float sumOfDebtsAmount = 0;
@@ -194,14 +202,12 @@ namespace xherp016_semestralniProjekt
                     debtAmount += bill.Amount;
                     sumOfDebtsAmount += bill.Amount;
                 }
-                debtsOutput.Add(person.getFullName(), debtAmount);
+                debtsOutput.Add(person.ToString(), debtAmount);
             }
-
             foreach (string key in debtsOutput.Keys)
             {
                 debtsOutput[key] -= (sumOfDebtsAmount / Database.Persons.Count);
             }
-            Debug.WriteLine(Database.Persons.Count);
             return debtsOutput;
         }
     }

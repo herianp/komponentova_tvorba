@@ -78,7 +78,7 @@
             this.Controls.Add(this.dataGridViewMoney);
             this.Controls.Add(this.labelMoney);
             this.Name = "FormDebt";
-            this.Text = "FormMoney";
+            this.Text = "FormDebts";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMoney)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
